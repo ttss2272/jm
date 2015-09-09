@@ -1,0 +1,144 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="admin.master.cs" Inherits="Juris.admin" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="page">
+        <div class="header">
+            <div class="title">
+                <h1>
+                    <a href="~/adminHome.aspx" style="text-decoration: none;color: #f9f9f9;">Juris Metrics ERP Application</a>                    
+                </h1>
+            </div>
+            <div class="loginDisplay">
+                <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="false" PostBackUrl="~/Login.aspx"
+                    OnClick="LinkButton1_Click">Logout</asp:LinkButton>
+                <%-- <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                    <AnonymousTemplate>--%>
+                <%-- <asp:Label ID="lblNm" Text ="name" runat ="server"></asp:Label>--%>
+                <%--  [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a> ]--%>
+                <%--</AnonymousTemplate>--%>
+                <%--<LoggedInTemplate>
+                        Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
+                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/"/> ]
+                    </LoggedInTemplate>--%>
+                <%-- </asp:LoginView>--%>
+            </div>
+            
+
+            <div class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="False"
+                    IncludeStyleBlock="False" Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem Text="Management" Selectable="false">
+                            <asp:MenuItem Text="Projects" Selectable="false" Value="Projects">
+                                <asp:MenuItem Text="View All Projects" Value="View All Projects" NavigateUrl="~/Admin/Project/ViewProjects.aspx">
+                                </asp:MenuItem>
+                                <asp:MenuItem Text="Add New Project" Value="Add New Project" NavigateUrl="~/Admin/Project/AddEditWork.aspx">
+                                </asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Invoice" Selectable="false" Value="Invoice">
+                                <asp:MenuItem NavigateUrl="~/Admin/Invoice/ViewInvoice.aspx" Text="View Invoice"
+                                    Value="View Invoice"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Admin/Invoice/AddInvoice.aspx" Text="Add Invoice" Value="Add Invoice">
+                                </asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Receipts" Selectable="false" Value="Receipts">
+                                <asp:MenuItem NavigateUrl="~/Admin/Receipt/ViewReceipt.aspx" Text="View Receipts"
+                                    Value="View Receipts"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Admin/Receipt/AddReceipt.aspx" Text="Add New Receipt"
+                                    Value="Add New Receipt"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Admin/TransferTally/TransferToTally.aspx" Text="Transfer to Tally"
+                                Value="Transfer to Tally"></asp:MenuItem>
+                            <asp:MenuItem Text="Date Turnaround Reports" Value="Date Turnaround Reports" NavigateUrl="~/Rpt/DateTurnArroundReport.aspx">
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Master" Selectable="false">
+                            <asp:MenuItem Text="Clients" Selectable="false" Value="Clients">
+                                <asp:MenuItem NavigateUrl="~/Admin/Client/ViewClient.aspx" Text="View Clients" Value="View Clients">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Admin/Client/AddClient.aspx" Text="Add New Clients"
+                                    Value="Add New Clients"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Clerk" Selectable="false" Value="Clerk">
+                                <asp:MenuItem NavigateUrl="~/Admin/Clerk/ViewClerk.aspx" Text="View Clerks" Value="View Clerks">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Admin/Clerk/AddEditClerk.aspx" Text="Add New Clerk"
+                                    Value="Add New Clerk"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Services" Selectable="false" Value="Services">
+                                <asp:MenuItem NavigateUrl="~/Admin/Services/ViewService.aspx" Text="View Services"
+                                    Value="View Services"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Admin/Services/AddEditService.aspx" Text="Add New Service"
+                                    Value="Add New Service"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Employee" Selectable="false" Value="Employee">
+                                <asp:MenuItem NavigateUrl="~/Admin/Employees/ViewEmployees.aspx" Text="View Employees"
+                                    Value="View Employees"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Admin/Employees/AddEditEmployees.aspx" Text="Add New Employee"
+                                    Value="Add New Employee"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Admin/Documents/ViewDocument.aspx" Text="Documents/Papers"
+                                Value="Documents/Papers"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Admin/Type of work/TypeOfWork.aspx" Text="Type Of Work"
+                                Value="Type Of Work"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Admin/Document Boys/DocumentBoys.aspx" Text="Document Boys"
+                                Value="Document Boys"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Admin/Users/AddSearchUser.aspx" Text="Users" Value="Users">
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Reports" Selectable="false" Value="Reports">
+                            <asp:MenuItem Text="Client Report Revenue" Value="Client Report Revenue" NavigateUrl="~/Rpt/ClientWiseRevenueMonth.aspx">
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Client Report Revenue with Type of Work" Value="Client Report Revenue with Type of Work"
+                                NavigateUrl="~/Rpt/ClientReportRevenueWithTypeOfWork.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Client Report for Papers" Value="Client Report for Papers" NavigateUrl="~/Rpt/ClientWisePaperReport.aspx">
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Document Boy History" Value="Document Boy History" NavigateUrl="~/Rpt/DocumentBoysPerformanceReport.aspx">
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Employee History" Value="Employee History" NavigateUrl="~/Rpt/EmployeePerformanceReport.aspx">
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Search Clerk History" Value="Search Clerk History" NavigateUrl="~/Rpt/ClerkPerformanceReport.aspx">
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Date Turnaround Reports" Value="Date Turnaround Reports" NavigateUrl="~/Rpt/DateTurnArroundReport.aspx">
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Outstanding Reports" Value="Outstanding Reports" NavigateUrl="~/Rpt/OutstandingReport.aspx">
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Case Name and Reference Number" Value="Case Name and Reference Number"
+                                NavigateUrl="~/Rpt/CaseReport.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="File Details" Value="File Details" NavigateUrl="~/Rpt/FileDetails.aspx">
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Settings" Selectable="false" Value="Settings">
+                            <asp:MenuItem Text="BackUp" Value="BackUp" NavigateUrl="~/Admin/Setting/Backup.aspx">
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                    </Items>
+                </asp:Menu>                
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        <div align="left" style="width: 40%; float: left;">
+            Copyright 2015 © Juris. All Rights Reserved
+        </div>
+        <div align="right" style="width: 25%; float: right;">
+            Developed By <a href="http://www.teratech-solutions.com" target="_blank">Teratech Solutions</a>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

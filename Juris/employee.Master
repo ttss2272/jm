@@ -1,0 +1,106 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="employee.master.cs" Inherits="Juris.employee" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+      <script type="text/javascript" >
+          function preventBack() { window.history.forward(); }
+          setTimeout("preventBack()", 0);
+          window.onunload = function () { null };
+    
+    </script>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />    
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body onload ="javascript:preventBack()">
+    <form id="form1" runat="server">
+    <div class="page">
+        <div class="header">
+            <div class="title">
+                <h1>
+                   <a href="~/employeeHome.aspx" style="text-decoration: none;color: #f9f9f9;">Juris Metrics ERP Application</a>
+                </h1>
+            </div>
+          <div class="loginDisplay">
+             <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl ="~/Login.aspx"  
+                    onclick="LinkButton1_Click">Logout</asp:LinkButton>
+                <%--<asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                    <AnonymousTemplate>
+                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a> ]
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
+                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/"/> ]
+                    </LoggedInTemplate>
+                </asp:LoginView>--%>
+            </div>
+            <div class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" 
+                    EnableViewState="False" IncludeStyleBlock="False" Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem Text="Management">
+                            <asp:MenuItem Text="Projects" Value="Projects">
+                                <asp:MenuItem Text="View All Projects" Value="View All Projects" 
+                                    NavigateUrl="~/Emp/Project/ViewProjects.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="Add New Project" Value="Add New Project" 
+                                    NavigateUrl="~/Emp/Project/AddEditWork.aspx"></asp:MenuItem>
+                            </asp:MenuItem>
+                             <asp:MenuItem Text="Date Turnaround Reports" Value="Date Turnaround Reports" NavigateUrl="~/Rpt/DateTurnArroundReport1.aspx">
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Master">
+                            <asp:MenuItem Text="Clients" Value="Clients"><asp:MenuItem Text="View Clients" 
+                                    Value="View Clients" NavigateUrl="~/Emp/Client/ViewClient.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Add New Clients" Value="Add New Clients" NavigateUrl="~/Emp/Client/AddClient.aspx"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Clerk" Value="Clerk">
+                                <asp:MenuItem NavigateUrl="~/Emp/Clerk/ViewClerk.aspx" Text="View Clerks" Value="View Clerks"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Emp/Clerk/AddEditClerk.aspx" Text="Add New Clerk" Value="Add New Clerk"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Services" Value="Services">
+                                <asp:MenuItem NavigateUrl="~/Emp/Services/ViewService.aspx" Text="View Services" 
+                                    Value="View Services"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Emp/Services/AddEditService.aspx" Text="Add New Service" 
+                                    Value="Add New Service"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Employee" Value="Employee">
+                                <asp:MenuItem NavigateUrl="~/Emp/Employees/ViewEmployees.aspx" 
+                                    Text="View Employees" Value="View Employees"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Emp/Employees/AddEditEmployees.aspx" 
+                                    Text="Add New Employee" Value="Add New Employee"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Emp/Documents/ViewDocument.aspx" 
+                                Text="Documents/Papers" Value="Documents/Papers"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Emp/Type Of Work/TypeOfWork.aspx" 
+                                Text="Type Of Work" Value="Type Of Work"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Emp/Document Boys/DocumentBoys.aspx" 
+                                Text="Document Boys" Value="Document Boys"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <%--<asp:MenuItem NavigateUrl="~/Login.aspx" Text="Logout" Value="Logout" ></asp:MenuItem>--%>
+                    </Items>
+                   
+                </asp:Menu>
+               
+          </div>  
+            <%--<asp:Label ID="lblNm" Text ="name" runat ="server"></asp:Label>--%>
+       </div> 
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        <div align="left" style="width: 40%; float: left;">
+            Copyright 2015 © Juris. All Rights Reserved
+        </div>
+        <div align="right" style="width: 25%; float: right;">
+            Developed By <a href="http://www.teratech-solutions.com" target="_blank">Teratech Solutions</a>
+        </div>
+    </div>    
+    </form>
+</body>
+</html>
